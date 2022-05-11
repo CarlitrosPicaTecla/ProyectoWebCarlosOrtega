@@ -19,8 +19,8 @@ public class Producto {
 
 
 	@Id 
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long idProducto;
+	@GeneratedValue
+	private long id;
 	
 	private String nombre;
 	private String marca;

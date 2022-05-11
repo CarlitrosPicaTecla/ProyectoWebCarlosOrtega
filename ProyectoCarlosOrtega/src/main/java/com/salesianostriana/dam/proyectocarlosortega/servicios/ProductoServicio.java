@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.proyectocarlosortega.servicios;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -59,7 +60,7 @@ public class ProductoServicio
 	 * @param id
 	 * @return el alumno encontrado o <code>null</code>
 	 */
-	public Producto findById(long id) {
-		return productoRepository.findById(id).orElse(null);
+	public Optional<Producto> findById(long id) {
+		return productoRepository.findById(id);
 	}
 }

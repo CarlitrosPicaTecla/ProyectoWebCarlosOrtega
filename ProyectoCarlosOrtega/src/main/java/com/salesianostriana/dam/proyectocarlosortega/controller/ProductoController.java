@@ -1,6 +1,6 @@
 package com.salesianostriana.dam.proyectocarlosortega.controller;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,40 +23,9 @@ public class ProductoController {
 	@GetMapping ("/productos")
 	public String controladorCondicionales (Model model){
 
+
 		
-		List<Producto> p = 
-				List.of( Producto.builder()
-				.marca("Risi")
-				.nombre("Risketos")
-				.tipo("Snack")
-				.precioBase(25.0)
-				.build(),
-				Producto.builder()
-				.marca("Risi")
-				.nombre("Gusanitos")
-				.tipo("Snack")
-				.precioBase(20.0)
-				.build(),
-				Producto.builder()
-				.marca("Risi")
-				.nombre("MatchBall")
-				.tipo("Snack")
-				.precioBase(30.0)
-				.build(),
-				Producto.builder()
-				.marca("Fini")
-				.nombre("Fresitas")
-				.tipo("Gomitas")
-				.precioBase(10.0)
-				.build(),
-				Producto.builder()
-				.marca("Trolli")
-				.nombre("Arañitas")
-				.tipo("Gomitas")
-				.precioBase(30.0)
-				.build()) ;
-		
-		model.addAttribute("productosLista", p  );
+		model.addAttribute("productosLista", ps.findAll()  );
 		return "productos";//Se devuelve la plantilla en HTML
 	}
 	@GetMapping ("/")
@@ -89,6 +58,35 @@ public class ProductoController {
 	public String borrar(@PathVariable("id") long id) {
 		ps.delete(id);
 		return "redirect:/productos";
+	}
+	
+	@GetMapping("/editar/{id}")
+	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
+		
+		//Buscamos al alumno por id y recordemos que el método findById del servicio, devuelve el objeto buscado o null si no se encuentra.
+		 
+		
+		Optional<Producto> aEditar= ps.findById(id);
+		
+		if (aEditar != null) {
+			model.addAttribute("producto", aEditar.get());
+			return "formulario";
+		} else {
+			// No existe ningún alumno con el Id proporcionado.
+			// Redirigimos hacia el listado.
+			return "redirect:/productos";
+		}
+		
+		
+	}
+	
+	/**
+	 * Método que procesa la respuesta del formulario al editar
+	 */
+	@PostMapping("/editar/submit")
+	public String procesarFormularioEdicion(@ModelAttribute("producto") Producto p) {
+		ps.edit(p);
+		return "redirect:/productos";//Volvemos a redirigir la listado a través del controller para pintar la lista actualizada con la modificación hecha
 	}
 	
 }
