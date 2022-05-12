@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Simple Sidebar - Start Bootstrap Template</title>
+        <title>Gestion</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -15,7 +15,8 @@
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
+                <div class="sidebar-heading border-bottom bg-light">Gestion
+                </div>
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/nuevo" >Añadir producto</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Pedido</a>
@@ -41,7 +42,7 @@
 
                 <section class="w-50 m-auto pt-5">
                   <form th:action="${producto.id != 0} ? @{/editar/submit} : @{/nuevo/submit}" th:object="${producto}" method="post">
-                    <input th:if="${producto.id != 0}" type="hidden" name="id" th:field="${id}" />
+                    <input th:if="${producto.id != 0}" type="hidden" name="id" th:field="*{id}" />
                     <div class="mb-3">
                       <label for="exampleFormControlInput1" class="form-label">Nombre</label>
                       <input type="text" class="form-control"  name="nombre" th:field="${producto.nombre}" placeholder="Nombre " >
@@ -78,4 +79,4 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
     </body>
-</html>
+</html>xmlns:th="http://www.thymeleaf.org"

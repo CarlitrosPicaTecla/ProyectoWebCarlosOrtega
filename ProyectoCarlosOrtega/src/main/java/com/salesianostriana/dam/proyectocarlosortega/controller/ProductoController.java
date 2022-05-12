@@ -34,13 +34,7 @@ public class ProductoController {
 		
 		return "index";//Se devuelve la plantilla en HTML
 	}
-	
-	@GetMapping ("/gestion")
-	public String controladorGestion (Model model){
 
-		
-		return "gestion";//Se devuelve la plantilla en HTML
-	}
 	
 	@GetMapping("/nuevo")
 	public String mostrarFormulario(Model model) {
@@ -67,7 +61,7 @@ public class ProductoController {
 		 
 		
 		Optional<Producto> aEditar= ps.findById(id);
-		
+		System.out.println(aEditar);
 		if (aEditar != null) {
 			model.addAttribute("producto", aEditar.get());
 			return "formulario";

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Simple Sidebar - Start Bootstrap Template</title>
+        <title>Gestion</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -15,7 +15,7 @@
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
+                <div class="sidebar-heading border-bottom bg-light">Gestion</div>
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/nuevo" >Añadir producto</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Pedido</a>
@@ -55,10 +55,10 @@
                       <td th:text="${producto.nombre}"></td>
                       <td th:text="${producto.marca}"></td>
                       <td th:text="${producto.tipo}"></td>
-                      <td th:text="${'€' + #numbers.formatDecimal(producto.precioBase, 1, 2)}"></td>
+                      <td th:text="${ #numbers.formatDecimal(producto.precioBase, 1, 2)+ '€'}"></td>
                       <td>
-                          <a href="#" th:href="@{/editar/{id}(id=${producto.id})}">Editar</a> | 
-                          <a href="#" th:href="@{/borrar/{id}(id=${producto.id})}">Borrar</a>
+                          <a href="#" th:href="@{/editar/{id}(id=${producto.id})}" class="btn btn-outline-dark">Editar</a> | 
+                          <a href="#" th:href="@{/borrar/{id}(id=${producto.id})}" class="btn btn-outline-dark">Borrar</a>
                       </td>
                     </tr>
                   </tbody>
