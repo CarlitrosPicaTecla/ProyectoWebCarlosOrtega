@@ -10,7 +10,7 @@
 <body>
     <h1>Bienvenido a la zona privada de usuario</h1>
     <p th:text="${usuario}">Nombre de usuario</p>
-    <a th:href="@{/}">Zona pública</a> | <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">Zona admin</a> | <a th:href="@{/logout}">Salir</a>
+    <a th:href="@{/index}">Zona pública</a> | <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">Zona admin</a> | <a th:href="@{/logout}">Salir</a>
 </body>
 
 </html>

@@ -28,7 +28,7 @@ public class ProductoController {
 		model.addAttribute("productosLista", ps.findAll()  );
 		return "productos";//Se devuelve la plantilla en HTML
 	}
-	@GetMapping ("/")
+	@GetMapping ("/index")
 	public String controladorInicio (Model model){
 
 		
