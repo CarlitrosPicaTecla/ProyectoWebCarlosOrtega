@@ -20,7 +20,7 @@ public class ProductoController {
 	private ProductoServicio ps;
 	
 
-	@GetMapping ("/productos")
+	@GetMapping ("/admin/productos")
 	public String controladorCondicionales (Model model){
 
 
@@ -28,7 +28,7 @@ public class ProductoController {
 		model.addAttribute("productosLista", ps.findAll()  );
 		return "productos";//Se devuelve la plantilla en HTML
 	}
-	@GetMapping ("/index")
+	@GetMapping ("/private/index")
 	public String controladorInicio (Model model){
 
 		
@@ -36,25 +36,25 @@ public class ProductoController {
 	}
 
 	
-	@GetMapping("/nuevo")
+	@GetMapping("/admin/nuevo")
 	public String mostrarFormulario(Model model) {
 		model.addAttribute("producto", new Producto());
 		return "formulario";
 	}
 	
-	@PostMapping("/nuevo/submit")
+	@PostMapping("/admin/nuevo/submit")
 	public String procesarFormulario(@ModelAttribute("producto") Producto p) {
 		ps.add(p);
-		return "redirect:/productos";//Podría ser también return "redirect:/list
+		return "redirect:/admin/productos";//Podría ser también return "redirect:/list
 	}
 	
-	@GetMapping("/borrar/{id}")
+	@GetMapping("/admin/borrar/{id}")
 	public String borrar(@PathVariable("id") long id) {
 		ps.delete(id);
-		return "redirect:/productos";
+		return "redirect:/admin/productos";
 	}
 	
-	@GetMapping("/editar/{id}")
+	@GetMapping("/admin/editar/{id}")
 	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
 		
 		//Buscamos al alumno por id y recordemos que el método findById del servicio, devuelve el objeto buscado o null si no se encuentra.
@@ -68,7 +68,7 @@ public class ProductoController {
 		} else {
 			// No existe ningún alumno con el Id proporcionado.
 			// Redirigimos hacia el listado.
-			return "redirect:/productos";
+			return "redirect:/admin/productos";
 		}
 		
 		
@@ -77,10 +77,10 @@ public class ProductoController {
 	/**
 	 * Método que procesa la respuesta del formulario al editar
 	 */
-	@PostMapping("/editar/submit")
+	@PostMapping("/admin/editar/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("producto") Producto p) {
 		ps.edit(p);
-		return "redirect:/productos";//Volvemos a redirigir la listado a través del controller para pintar la lista actualizada con la modificación hecha
+		return "redirect:/admin/productos";//Volvemos a redirigir la listado a través del controller para pintar la lista actualizada con la modificación hecha
 	}
 	
 }

@@ -14,6 +14,6 @@ public class PrivateController {
 		
 		model.addAttribute("usuario", user.getUsername());
 		
-		return "/private/index";
+		return "index";
 	}
 }

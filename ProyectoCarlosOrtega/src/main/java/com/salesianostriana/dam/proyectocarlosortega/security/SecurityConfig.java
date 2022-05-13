@@ -23,15 +23,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(userDetailsService());
 	}
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests().antMatchers("/private/**").hasAnyRole("USER", "ADMIN")
-				.antMatchers("/admin/**", "/gestion/**").hasRole("ADMIN").anyRequest().permitAll().and()
-				.exceptionHandling().accessDeniedPage("/error").and().formLogin().loginPage("/").defaultSuccessUrl("/index")
-				.loginProcessingUrl("/login").failureUrl("/login-error").permitAll().and().logout().logoutUrl("/logout")
-				.logoutSuccessUrl("/").permitAll();
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/private/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .anyRequest().permitAll()
+                .and().exceptionHandling().accessDeniedPage("/error")
+                .and().formLogin().defaultSuccessUrl("/login").loginPage("/").loginProcessingUrl("/login").failureUrl("/login-error").permitAll()
+                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll();
 
-	}
+    }
 
 	@Bean
 	@Override

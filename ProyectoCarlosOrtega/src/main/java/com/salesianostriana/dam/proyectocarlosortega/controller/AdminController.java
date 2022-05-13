@@ -28,6 +28,6 @@ public class AdminController {
     	// ESTO NO SE DEBE HACER ASÍ NUNCA. 
     	// ES SOLAMENTE POR MOTIVOS DIDÁCTICOS
     	model.addAttribute("usuario", elUsuario.get());
-        return "admin/index";
+        return "index";
     }
 }
