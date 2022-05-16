@@ -18,10 +18,10 @@
                 <div class="sidebar-heading border-bottom bg-light">Gestion
                 </div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/nuevo" >Añadir producto</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/admin/nuevo" >Añadir producto</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Pedido</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Facturacion</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/productos" >Lista de Productos</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/admin/productos" >Lista de Productos</a>
                 </div>
             </div>
             <!-- Page content wrapper-->
@@ -41,7 +41,7 @@
                 </nav>
 
                 <section class="w-50 m-auto pt-5">
-                  <form th:action="${producto.id != 0} ? @{/editar/submit} : @{/nuevo/submit}" th:object="${producto}" method="post">
+                  <form th:action="${producto.id != 0} ? @{/admin/editar/submit} : @{/admin/nuevo/submit}" th:object="${producto}" method="post">
                     <input th:if="${producto.id != 0}" type="hidden" name="id" th:field="*{id}" />
                     <div class="mb-3">
                       <label for="exampleFormControlInput1" class="form-label">Nombre</label>
@@ -57,12 +57,16 @@
                     </div>
                     <div class="mb-3">
                       <label for="exampleFormControlInput5" class="form-label">Precio</label>
-                      <input type="text" class="form-control" name="precio" th:field="${producto.precioBase}" placeholder="Precio" >
+                      <input type="text" class="form-control" name="precio" th:field="${producto.precio}" placeholder="Precio" >
                     </div>
                     <div class="mb-3">
                       <label for="exampleFormControlTextarea6" class="form-label">Descripcion</label>
                       <input type="text" class="form-control"  name="descripcion" th:field="${producto.descripcion}" placeholder="Descripcion" >
                     </div>
+                    <div class="mb-3">
+                      <label for="exampleFormControlTextarea7" class="form-label">Imagen</label>
+                      <input type="text" class="form-control"  name="imagen" th:field="${producto.imagen}" placeholder="Imagen" >
+                    </div>                    
                     <button type="submit" class="btn btn-primary mb-1" name="enviar" value="Enviar">Enviar</button>
                 </form>
                   </section>

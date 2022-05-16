@@ -28,10 +28,14 @@ public class ProductoController {
 		model.addAttribute("productosLista", ps.findAll()  );
 		return "productos";//Se devuelve la plantilla en HTML
 	}
+	
+	
+
 	@GetMapping ("/private/index")
 	public String controladorInicio (Model model){
 
 		
+		model.addAttribute("productosTienda", ps.findAll()  );
 		return "index";//Se devuelve la plantilla en HTML
 	}
 

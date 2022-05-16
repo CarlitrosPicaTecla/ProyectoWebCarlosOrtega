@@ -1,28 +1,52 @@
 <!DOCTYPE html>
-
 <html xmlns:th="http://www.thymeleaf.org" 
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-<head>
-    <title>Ejemplo de Seguridad - Zona Pública</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
+        <title>Login</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+<link rel="stylesheet" href="styles.css" th:href="@{/css/styles.css}" />
+    </head>
+    <body>
 
-<body>
-    <h1>Bienvenido a la zona pública</h1>
-    <a th:href="@{/private}">Zona privada</a> | <a th:href="@{/admin}">Zona admin</a>
-    <p th:if="${loginError}" class="error">Error en el nombre de usuario y/o contraseña</p>
-    <form method="POST" th:action="@{/login}" sec:authorize="!isAuthenticated()">
-        <label for="username">Nombre de usuario: </label>
-        <input type="text" name="username" id="username" placeholder="Nombre de usuario" autofocus="autofocus" /> <br />
-        <label for="password">Contraseña: </label>
-        <input type="password" name="password" id="password" placeholder="Contraseña" /> <br />
-        <input type="submit" value="Enviar" />
-    </form>
-    <div sec:authorize="isAuthenticated()">
-        <p sec:authentication="name">Nombre </p>
-        <a th:href="@{/logout}">Salir</a>
-    </div>
-</body>
+        <div sec:authorize="isAuthenticated()" class="d-flex flex-row-reverse bd-highlight m-5">
+          <button th:href="@{/logout}" class="btn btn-dark btn-block mb-4">Salir</button>
+          <p sec:authentication="name" class="d-inline  align-bottom h4 m-2"></p>
 
+        </div>
+
+        <form method="POST" th:action="@{/login}" sec:authorize="!isAuthenticated()" class="w-25 m-auto bg-secondary mt-5 p-5 rounded">
+            <!-- Email input -->
+            <h2 class="text-center">Login</h2>
+            <div class="form-outline mb-4">
+              <label class="form-label" for="username">Usuario</label>
+              <input type="text" id="username" name="username" class="form-control" placeholder="Usuario" autofocus="autofocus"/>
+            </div>
+          
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+              <label class="form-label" for="password">Contraseña</label>
+              <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña"/> 
+            </div>
+          
+          
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-dark btn-block mb-4 m-auto" value="Enviar">Enviar</button>
+          
+            
+          </form>
+
+
+                    
+ 
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
 </html>

@@ -19,13 +19,14 @@ public class Producto {
 
 
 	@Id 
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
 	private String nombre;
 	private String marca;
 	private String descripcion;
 	private String tipo;
-	private Double precioBase;
+	private String imagen;
+	private Double precio;
 
 }
