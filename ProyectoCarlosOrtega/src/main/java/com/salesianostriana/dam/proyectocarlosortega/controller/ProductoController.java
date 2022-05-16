@@ -93,7 +93,7 @@ public class ProductoController {
 	
 	@GetMapping("/private/buscar")
 	public String buscar(Model model, @RequestParam String nombre) {
-		model.addAttribute("lista", ps.buscarPorNombre(nombre));
+		model.addAttribute("productosTienda", ps.buscarPorNombre(nombre));
 		return "index";
 	}
 	
