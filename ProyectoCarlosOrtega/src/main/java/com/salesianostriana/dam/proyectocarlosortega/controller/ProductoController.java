@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.proyectocarlosortega.model.Producto;
 import com.salesianostriana.dam.proyectocarlosortega.servicios.ProductoServicio;
@@ -86,5 +87,16 @@ public class ProductoController {
 		ps.edit(p);
 		return "redirect:/admin/productos";//Volvemos a redirigir la listado a través del controller para pintar la lista actualizada con la modificación hecha
 	}
+	
+	
+	//BUSCAR
+	
+	@GetMapping("/private/buscar")
+	public String buscar(Model model, @RequestParam String nombre) {
+		model.addAttribute("lista", ps.buscarPorNombre(nombre));
+		return "index";
+	}
+	
+
 	
 }

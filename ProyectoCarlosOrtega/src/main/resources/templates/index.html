@@ -45,7 +45,16 @@
             </div>
         </header>
         <!-- Section-->
+        
         <section  class="py-5">
+        
+        	
+            <form method="GET" th:action="@{/private/buscar}" >
+		    	<input  type="text" placeholder="Nombre del producto"
+		    		name="nombre" id="nombre" th:value="${param.nombre}" style="margin-left: 45%;" />
+		    	<input type="submit" value="Buscar" />
+   			 </form>
+
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" >
                     
@@ -60,6 +69,7 @@
                                 <div class="text-center">
                                     <!-- Product name-->
                                     <h5 class="fw-bolder" th:text="${producto.nombre}"></h5>
+                                    <h6 class="fw-bolder" th:text="${producto.marca}"></h6>
                                     <!-- Product price-->
                                     <span class=""  th:text="${ #numbers.formatDecimal(producto.precio, 1, 2)+ '€'}"></span>
                                     

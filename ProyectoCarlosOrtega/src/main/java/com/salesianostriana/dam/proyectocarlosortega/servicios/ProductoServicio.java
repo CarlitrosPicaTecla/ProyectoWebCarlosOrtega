@@ -63,4 +63,9 @@ public class ProductoServicio
 	public Optional<Producto> findById(long id) {
 		return productoRepository.findById(id);
 	}
+	
+	public List<Producto> buscarPorNombre(String cadena) {
+		return productoRepository.findByNombreContainsIgnoreCase(cadena);
+	}
+	
 }
