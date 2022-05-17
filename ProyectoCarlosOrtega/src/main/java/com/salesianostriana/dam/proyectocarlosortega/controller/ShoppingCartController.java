@@ -36,7 +36,7 @@ public class ShoppingCartController {
     	
     	if (model.addAttribute("products",shoppingCartServicio.getProductsInCart()) == null)
     		return "redirect:/";
-    	return "carrito";
+    	return "carrito.html";
     }
 
     @GetMapping ("/private/productoACarrito/{id}")
@@ -46,10 +46,10 @@ public class ShoppingCartController {
     	
     	if(opCarrito != null) {
     		shoppingCartServicio.addProducto(opCarrito.get());
-    		return"carrito";
+			return "redirect:/private/carrito";
     	}
     	else {
-    			return "redirect:/private/carrito";
+    			return"/private/carrito";
     		}
     	
     	    		 
@@ -62,10 +62,11 @@ public class ShoppingCartController {
     	
     	if(opCarrito != null) {
     		shoppingCartServicio.removeProducto(opCarrito.get());
-    		return "carrito";
+    		return "redirect:/private/carrito";
     	}
     	else {
-    		return "redirect:/private/carrito";
+    		return "carrito";
+
     	}
     }
     
