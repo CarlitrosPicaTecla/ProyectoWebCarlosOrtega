@@ -42,12 +42,13 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ms-auto mt-2 mt-lg-0">
 							<li class="nav-item active"><a class="nav-link" href="/private/index">Home</a></li>
-							<li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
 
 						</ul>
 					</div>
 				</div>
 			</nav>
+			
+
 
 			<table class="table">
 				<thead>
@@ -73,9 +74,30 @@
 						<td>
 							<a href="#" th:href="@{/admin/editar/{id}(id=${producto.id})}"
 								class="btn btn-outline-dark">Editar</a> |
-							<a href="#" th:href="@{/admin/borrar/{id}(id=${producto.id})}"
-								class="btn btn-outline-dark">Borrar</a>
+							<a href="#" 
+								class="btn btn-outline-dark" data-bs-toggle="modal" 
+								data-bs-target="#myModal" th:attr="data-bs-target='#myModal'+${producto.id}">Borrar</a>
+								
+							<div class="modal" id="myModal" tabindex="-1" th:id="'myModal'+${producto.id}">
+						  <div class="modal-dialog">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h5 class="modal-title" id="exampleModalLabel">Confirmar</h5>
+						        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						      </div>
+						      <div class="modal-body">
+						        ¿Estas seguro de que quieres borrar un producto? Pulsa borrar para confirmar
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+						        <a  href="#"  th:href="@{/admin/borrar/{id}(id=${producto.id})}" class="btn btn-primary">Borrar</a>
+						      </div>
+						    </div>
+						  </div>
+						</div>
 						</td>
+
+					
 					</tr>
 				</tbody>
 			</table>
