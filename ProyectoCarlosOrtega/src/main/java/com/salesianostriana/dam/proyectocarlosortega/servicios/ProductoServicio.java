@@ -7,15 +7,15 @@ import org.springframework.stereotype.Service;
 
 import com.salesianostriana.dam.proyectocarlosortega.base.BaseServicelmpl;
 import com.salesianostriana.dam.proyectocarlosortega.model.Producto;
-import com.salesianostriana.dam.proyectocarlosortega.repositorio.ProductoRepository;
+import com.salesianostriana.dam.proyectocarlosortega.repositorio.ProductoRepositorio;
 @Service
 public class ProductoServicio 
-	extends BaseServicelmpl<Producto, Long, ProductoRepository>  {
+	extends BaseServicelmpl<Producto, Long, ProductoRepositorio>  {
 
 	// Inyectamos la dependencia al nuevo estilo, sin @Autowired
-	private ProductoRepository productoRepository;
+	private ProductoRepositorio productoRepository;
 	
-	public ProductoServicio(ProductoRepository prepo) {
+	public ProductoServicio(ProductoRepositorio prepo) {
 		this.productoRepository = prepo;
 	}
 	
@@ -67,5 +67,7 @@ public class ProductoServicio
 	public List<Producto> buscarPorNombre(String cadena) {
 		return productoRepository.findByNombreContainsIgnoreCase(cadena);
 	}
+	
+	
 	
 }

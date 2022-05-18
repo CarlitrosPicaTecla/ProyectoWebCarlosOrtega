@@ -44,7 +44,7 @@ public class ShoppingCartController {
     	
     	Optional<Producto> opCarrito = productoServicio.findById(id);
     	
-    	if(opCarrito != null) {
+    	if(opCarrito.get() != null) {
     		shoppingCartServicio.addProducto(opCarrito.get());
 			return "redirect:/private/carrito";
     	}
@@ -84,5 +84,30 @@ public class ShoppingCartController {
     	
     	return 0.0;
     }
+    
+    
+    @ModelAttribute("n_productos")
+    public int ContarProductosCarrito(Producto p) {
+    	Map <Producto,Integer> carrito=shoppingCartServicio.getProductsInCart();
+    	if(carrito!=null) {
+    	int cont=0;
+    	for (Producto a  : carrito.keySet()) {
+			cont+= carrito.get(a);
+		}
+    	
+    	return cont;
+    	}
+    	
+    	return 0;
+    }
+
+    @GetMapping ("/private/carrito/enviar")
+    public String EnviarVentaCarrito () {
+    	shoppingCartServicio.EnviarVenta();
+    	
+    	return "redirect:/private/index";
+    	
+    }
+    
 
 }

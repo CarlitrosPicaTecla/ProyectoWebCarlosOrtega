@@ -23,7 +23,7 @@ public class LineadeVenta {
 	private Producto producto;
 	
 	private int cantidad;
-	private Double precio;
+	private double precio;
 	private double descuento;
 	@ManyToOne
 	private Venta venta;

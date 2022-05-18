@@ -8,7 +8,7 @@ import com.salesianostriana.dam.proyectocarlosortega.model.Producto;
 
 
 
-public interface ProductoRepository 
+public interface ProductoRepositorio 
 	extends JpaRepository <Producto, Long> {
 
 	public List<Producto> findByNombreContainsIgnoreCase(String nombre);
