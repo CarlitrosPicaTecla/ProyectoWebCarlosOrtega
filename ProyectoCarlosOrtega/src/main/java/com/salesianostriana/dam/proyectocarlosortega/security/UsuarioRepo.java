@@ -28,7 +28,9 @@ public class UsuarioRepo {
 				Usuario.builder().username("luismi").password("12345678").role("ADMIN").nombre("Luis Miguel")
 						.apellidos("López Magaña").fechaNacimiento(LocalDate.of(1982, 1, 1)).build(),
 				Usuario.builder().username("angel").password("87654321").role("USER").nombre("Ángel")
-						.apellidos("Naranjo González").fechaNacimiento(LocalDate.of(1976, 1, 1)).build()
+						.apellidos("Naranjo González").fechaNacimiento(LocalDate.of(1976, 1, 1)).build(),
+				Usuario.builder().username("admin").password("admin").role("ADMIN").nombre("Admin")
+						.apellidos("Admin").fechaNacimiento(LocalDate.of(1982, 1, 1)).build()
 
 		);
 

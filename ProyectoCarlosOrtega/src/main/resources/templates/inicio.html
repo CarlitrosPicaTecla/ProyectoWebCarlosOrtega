@@ -1,52 +1,50 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
-xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-        <title>Login</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-<link rel="stylesheet" href="styles.css" th:href="@{/css/styles.css}" />
-    </head>
-    <body>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-        <div sec:authorize="isAuthenticated()" class="d-flex flex-row-reverse bd-highlight m-5">
-          <button th:href="@{/logout}" class="btn btn-dark btn-block mb-4">Salir</button>
-          <p sec:authentication="name" class="d-inline  align-bottom h4 m-2"></p>
+	<title>Login</title>
+	<!-- Favicon-->
+	<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+	<!-- Core theme CSS (includes Bootstrap)-->
+	<link rel="stylesheet" href="styles.css" th:href="@{/css/styles.css}" />
+</head>
 
-        </div>
-
-        <form method="POST" th:action="@{/login}" sec:authorize="!isAuthenticated()" class="w-25 m-auto bg-secondary mt-5 p-5 rounded">
-            <!-- Email input -->
-            <h2 class="text-center">Login</h2>
-            <div class="form-outline mb-4">
-              <label class="form-label" for="username">Usuario</label>
-              <input type="text" id="username" name="username" class="form-control" placeholder="Usuario" autofocus="autofocus"/>
-            </div>
-          
-            <!-- Password input -->
-            <div class="form-outline mb-4">
-              <label class="form-label" for="password">Contraseña</label>
-              <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña"/> 
-            </div>
-          
-          
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-dark btn-block mb-4 m-auto" value="Enviar">Enviar</button>
-          
-            
-          </form>
+<body>
 
 
-                    
- 
 
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    </body>
+	<form method="POST" th:action="@{/login}" sec:authorize="!isAuthenticated()"
+		class="w-25 m-auto bg-secondary mt-5 p-5 rounded">
+		<!-- Email input -->
+		<h2 class="text-center">Login</h2>
+		<div class="form-outline mb-4">
+			<label class="form-label" for="username">Usuario</label>
+			<input type="text" id="username" name="username" class="form-control" placeholder="Usuario"
+				autofocus="autofocus" />
+		</div>
+
+		<!-- Password input -->
+		<div class="form-outline mb-4">
+			<label class="form-label" for="password">Contraseña</label>
+			<input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" />
+		</div>
+
+
+		<!-- Submit button -->
+		<button type="submit" class="btn btn-dark btn-block mb-4 m-auto" value="Enviar">Enviar</button>
+	</form>
+		<div class="row justify-content-center w-25 m-auto">
+	<a class="btn btn-dark btn-block mb-4 m-5 " type="submit" th:href="@{/logout}">Salir</a>
+	</div>
+
+
+	<!-- Bootstrap core JS-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Core theme JS-->
+	
+</body>
+
 </html>
