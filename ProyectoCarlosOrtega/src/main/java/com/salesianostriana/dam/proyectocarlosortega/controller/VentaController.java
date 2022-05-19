@@ -66,7 +66,7 @@ public class VentaController {
 
 
 		
-		model.addAttribute("ventasLista", ventaServicio.findAll()  );
+		model.addAttribute("ventasLista", ventaServicio.findAll());
 		return "pedidos";
 	}
 	
