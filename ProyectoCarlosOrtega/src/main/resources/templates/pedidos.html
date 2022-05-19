@@ -21,7 +21,7 @@
 			<div class="list-group list-group-flush">
 				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="/admin/nuevo">Añadir
 					producto</a>
-				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Pedido</a>
+				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="/admin/pedidos">Pedidos</a>
 				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Facturacion</a>
 				<a class="list-group-item list-group-item-action list-group-item-light p-3"
 					href="/admin/productos">Lista de Productos</a>
@@ -53,52 +53,32 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th scope="col"></th>
 						<th scope="col">ID</th>
-						<th scope="col"></th>
-						<th scope="col">Marca</th>
-						<th scope="col">Tipo</th>
+						<th scope="col">Fecha Venta</th>
+						<th scope="col">Fecha Entrega</th>
+						<th scope="col">Estado entrega</th>
+						<th scope="col">Direccion</th>
+						<th scope="col">Cliente</th>
 						<th scope="col">Precio</th>
+						
+						
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="producto : ${productosLista}" class="align-middle">
-						<td><img th:src="${not (#strings.isEmpty(producto.imagen))} ? ${producto.imagen} : 'https://upload.wikimedia.org/wikipedia/commons/d/da/Imagen_no_disponible.svg'"
-								class="img-responsive icono-productos"
-								alt="imagen de los distintos servicios disponibles" /></td>
-						<td th:text="${producto.id}"></td>
-						<td th:text="${producto.nombre}"></td>
-						<td th:text="${producto.marca}"></td>
-						<td th:text="${producto.tipo}"></td>
-						<td th:text="${ #numbers.formatDecimal(producto.precio, 1, 2)+ '€'}"></td>
-						<td>
-							<a href="#" th:href="@{/admin/editar/{id}(id=${producto.id})}"
-								class="btn btn-outline-dark">Editar</a> |
-							<a href="#" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#myModal"
-								th:attr="data-bs-target='#myModal'+${producto.id}">Borrar</a>
+					<tr th:each="venta : ${ventasLista}" class="align-middle">
 
-							<div class="modal" id="myModal" tabindex="-1" th:id="'myModal'+${producto.id}">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h5 class="modal-title" id="exampleModalLabel">Confirmar</h5>
-											<button type="button" class="btn-close" data-bs-dismiss="modal"
-												aria-label="Close"></button>
-										</div>
-										<div class="modal-body">
-											¿Estas seguro de que quieres borrar un producto? Pulsa borrar para confirmar
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-secondary"
-												data-bs-dismiss="modal">Cerrar</button>
-											<a href="#" th:href="@{/admin/borrar/{id}(id=${producto.id})}"
-												class="btn btn-primary">Borrar</a>
-										</div>
-									</div>
-								</div>
-							</div>
+						<td th:text="${venta.id}"></td>
+						<td th:text="${venta.fechaVenta}"></td>
+						<td th:text="${venta.fechaEntrega}"></td>
+						<td th:text="${venta.entrega}"></td>
+						<td th:text="${venta.direccion}"></td>
+						<td th:text="${venta.user}"></td>
+						<td th:text="${ #numbers.formatDecimal(venta.total, 1, 2)+ '€'}"></td>
+						<td >
+						<a class="btn btn-outline-dark" th:href="@{/admin/entregado/{id}(id=${venta.id})}">Entregado</a>
+						
 						</td>
-
+						
 
 					</tr>
 				</tbody>

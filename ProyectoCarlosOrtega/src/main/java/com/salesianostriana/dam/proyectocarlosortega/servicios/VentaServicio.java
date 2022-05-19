@@ -1,14 +1,12 @@
 package com.salesianostriana.dam.proyectocarlosortega.servicios;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.salesianostriana.dam.proyectocarlosortega.base.BaseServicelmpl;
-import com.salesianostriana.dam.proyectocarlosortega.model.LineadeVenta;
 import com.salesianostriana.dam.proyectocarlosortega.model.Producto;
 import com.salesianostriana.dam.proyectocarlosortega.model.Venta;
 import com.salesianostriana.dam.proyectocarlosortega.repositorio.VentaRepositorio;
@@ -23,6 +21,12 @@ public class VentaServicio
 	@Autowired
 	private LineadeVentaServicio lineaVentaServicio;
 	
+	
+	public List<Venta> mostrarCompraUsuario(String nombre){
+		
+		return repositorio.obtenerVentas(nombre);
+		
+	}
 	
 	public double calcularPrecioCarrito(){
 		

@@ -28,7 +28,7 @@ import lombok.ToString;
 public class Venta {
 
 	@Id @GeneratedValue
-	private long idVenta;
+	private long id;
 
 	private LocalDate fechaVenta;
 	private LocalDate fechaEntrega;

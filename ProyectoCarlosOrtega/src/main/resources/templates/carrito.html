@@ -28,8 +28,8 @@
 				aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-					<li class="nav-item"><a class="nav-link active" aria-current="page" href="/private/index">Home</a>
-					</li>
+					<li class="nav-item"><a class="nav-link" aria-current="page" href="/private/index">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="/private/compras">Mis Compras</a></li>					
 					<li class="nav-item"><a class="nav-link" href="/admin/productos">Gestion</a></li>
 
 				</ul>
@@ -100,6 +100,19 @@
 								<h3><strong th:text="${total_carrito}">100€</strong></h3>
 							</td>
 						</tr>
+						
+						<tr>
+							<td>   </td>
+							<td>   </td>
+							<td>   </td>
+							<td>
+								<h3>Total Con IVA</h3>
+							</td>
+							<td class="text-right">
+								<h3><strong th:text="${carritoConIva}">200€</strong></h3>
+							</td>
+						</tr>
+						
 						<tr>
 							<td>   </td>
 							<td>   </td>

@@ -88,20 +88,6 @@ public class ShoppingCartController {
     }
     
     
-    @ModelAttribute("n_productos")
-    public int ContarProductosCarrito(Producto p) {
-    	Map <Producto,Integer> carrito=shoppingCartServicio.getProductsInCart();
-    	if(carrito!=null) {
-    	int cont=0;
-    	for (Producto a  : carrito.keySet()) {
-			cont+= carrito.get(a);
-		}
-    	
-    	return cont;
-    	}
-    	
-    	return 0;
-    }
 
     @GetMapping ("/private/carrito/enviar")
     public String EnviarVentaCarrito (@AuthenticationPrincipal UserDetails user) {
