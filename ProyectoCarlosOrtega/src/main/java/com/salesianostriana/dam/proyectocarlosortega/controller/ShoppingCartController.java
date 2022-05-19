@@ -4,6 +4,8 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -102,9 +104,9 @@ public class ShoppingCartController {
     }
 
     @GetMapping ("/private/carrito/enviar")
-    public String EnviarVentaCarrito () {
-    	shoppingCartServicio.EnviarVenta();
-    	
+    public String EnviarVentaCarrito (@AuthenticationPrincipal UserDetails user) {
+    	shoppingCartServicio.enviarVenta(user);
+    	//shoppingCartServicio.generarFechaEntregaVenta();
     	return "redirect:/private/index";
     	
     }

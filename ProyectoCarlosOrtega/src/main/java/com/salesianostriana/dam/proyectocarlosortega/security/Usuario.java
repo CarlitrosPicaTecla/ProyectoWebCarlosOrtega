@@ -17,5 +17,6 @@ public class Usuario {
 	private String nombre, apellidos;
 	// private String avatar;
 	private LocalDate fechaNacimiento;
+	private String direccion;
 
 }

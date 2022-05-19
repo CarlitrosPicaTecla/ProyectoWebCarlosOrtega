@@ -31,10 +31,12 @@ public class Venta {
 	private long idVenta;
 
 	private LocalDate fechaVenta;
-	private Date fechaEntrega;
+	private LocalDate fechaEntrega;
 	private Boolean entrega;
 	private Double iva;
+	private String direccion;
 	private Double total;
+	private String user;
 	
 	@Builder.Default
 	@ToString.Exclude
