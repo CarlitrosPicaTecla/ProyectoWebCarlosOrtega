@@ -31,33 +31,6 @@ public class VentaController {
 	
 
 	
-	
-	
-	
-	
-	
-    @ModelAttribute("total_carrito")
-    public Double totalCarrito () {
-    	
-    	Map <Producto,Integer> carrito=shoppingCartService.getProductsInCart();
-    	double total=0.0;
-    	if (carrito !=null) {
-        	for (Producto p: carrito.keySet()) {
-        		total+=p.getPrecio()*carrito.get(p);
-        	}
-        	return total;
-    	}
-    	
-    	return 0.0;
-    }
-    
-    
-    
-    @ModelAttribute("carritoConIva")
-    public Double totalCarritoConIva () {
-    	
-    	return ventaServicio.calcularPrecioTotalIva();
-    }
     
     
     
@@ -85,15 +58,13 @@ public class VentaController {
 	@GetMapping("/admin/entregado/{id}")
 	public String cambiarEstadoEntrega(@PathVariable("id") long id) {
 		
-		//Buscamos al alumno por id y recordemos que el método findById del servicio, devuelve el objeto buscado o null si no se encuentra.
 		 
 		
 		Optional<Venta> aEditar= ventaServicio.findById(id);
-		if (aEditar != null) {
-			aEditar.get().setEntrega(true);
-			
-			return "redirect:/admin/pedidos";
-
+		if (aEditar.isPresent()) {
+			Venta v = aEditar.get();
+			v.setEntrega(true);
+			ventaServicio.save(v);
 			
 		}
 		return "redirect:/admin/pedidos";

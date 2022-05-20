@@ -46,6 +46,8 @@ public class VentaServicio
 		return 0.0;
 	}
 	
+	//Logica de Negocio
+	
 	public double calcularPrecioDescuento() {
 		double descuento = 15;
 		double total=calcularPrecioCarrito();

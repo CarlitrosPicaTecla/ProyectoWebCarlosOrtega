@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.salesianostriana.dam.proyectocarlosortega.model.Producto;
 import com.salesianostriana.dam.proyectocarlosortega.servicios.ProductoServicio;
 import com.salesianostriana.dam.proyectocarlosortega.servicios.ShoppingCartServicio;
+import com.salesianostriana.dam.proyectocarlosortega.servicios.VentaServicio;
 
 
 
@@ -26,6 +27,10 @@ public class ShoppingCartController {
 	
 	@Autowired
 	private ProductoServicio productoServicio;
+	
+
+	@Autowired
+	private VentaServicio vs;
 	
     @Autowired
     public ShoppingCartController(ShoppingCartServicio shoppingCartService, ProductoServicio productService) {
@@ -85,6 +90,14 @@ public class ShoppingCartController {
     	}
     	
     	return 0.0;
+    }
+    
+    @ModelAttribute("carritoConIva")
+    public Double totalCarritoConIva () {
+    	double total=0.0;
+    	total=vs.calcularPrecioTotalIva();
+    	
+    	return total;
     }
     
     

@@ -40,7 +40,7 @@
 				</form>
 
 				<div sec:authorize="isAuthenticated()" style="margin-top: 1%;">
-					<p sec:authentication="name">Nombre</p>
+					<p sec:authentication="name"></p>
 				</div>
 				<a class="btn btn-outline-dark" type="submit" th:href="@{/logout}">Salir</a>
 			</div>
