@@ -27,7 +27,7 @@ public class ProductoController {
 
 		
 		model.addAttribute("productosLista", ps.findAll()  );
-		return "productos";//Se devuelve la plantilla en HTML
+		return "productos";
 	}
 	
 	
@@ -37,7 +37,7 @@ public class ProductoController {
 
 		
 		model.addAttribute("productosTienda", ps.findAll()  );
-		return "index";//Se devuelve la plantilla en HTML
+		return "index";
 	}
 
 	
@@ -50,7 +50,7 @@ public class ProductoController {
 	@PostMapping("/admin/nuevo/submit")
 	public String procesarFormulario(@ModelAttribute("producto") Producto p) {
 		ps.add(p);
-		return "redirect:/admin/productos";//Podría ser también return "redirect:/list
+		return "redirect:/admin/productos";
 	}
 	
 	@GetMapping("/admin/borrar/{id}")
@@ -62,7 +62,6 @@ public class ProductoController {
 	@GetMapping("/admin/editar/{id}")
 	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
 		
-		//Buscamos al alumno por id y recordemos que el método findById del servicio, devuelve el objeto buscado o null si no se encuentra.
 		 
 		
 		Optional<Producto> aEditar= ps.findById(id);
@@ -71,21 +70,18 @@ public class ProductoController {
 			model.addAttribute("producto", aEditar.get());
 			return "formulario";
 		} else {
-			// No existe ningún alumno con el Id proporcionado.
-			// Redirigimos hacia el listado.
+
 			return "redirect:/admin/productos";
 		}
 		
 		
 	}
 	
-	/**
-	 * Método que procesa la respuesta del formulario al editar
-	 */
+
 	@PostMapping("/admin/editar/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("producto") Producto p) {
 		ps.edit(p);
-		return "redirect:/admin/productos";//Volvemos a redirigir la listado a través del controller para pintar la lista actualizada con la modificación hecha
+		return "redirect:/admin/productos";
 	}
 	
 	

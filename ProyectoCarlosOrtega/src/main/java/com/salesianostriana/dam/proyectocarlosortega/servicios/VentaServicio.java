@@ -54,7 +54,7 @@ public class VentaServicio
 		Map<Producto, Integer> carrito = shoppingCartServicio.getProductsInCart();
 
 		if(carrito!=null) {
-			if(total>=60) {
+			if(total>=50) {
 				return total-(total*descuento/100);
 			}
 		}

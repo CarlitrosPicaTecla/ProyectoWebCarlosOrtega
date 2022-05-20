@@ -23,10 +23,8 @@ public class AdminController {
     @GetMapping("/admin")
     public String adminIndex(Model model, @AuthenticationPrincipal UserDetails user) {
        
-        //model.addAttribute("usuario", user.getUsername());
     	Optional<Usuario> elUsuario = usuarioRepo.findUserByUsername(user.getUsername());
-    	// ESTO NO SE DEBE HACER ASÍ NUNCA. 
-    	// ES SOLAMENTE POR MOTIVOS DIDÁCTICOS
+
     	model.addAttribute("usuario", elUsuario.get());
         return "index";
     }

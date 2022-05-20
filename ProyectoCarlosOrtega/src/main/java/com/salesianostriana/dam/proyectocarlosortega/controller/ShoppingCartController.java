@@ -105,7 +105,6 @@ public class ShoppingCartController {
     @GetMapping ("/private/carrito/enviar")
     public String EnviarVentaCarrito (@AuthenticationPrincipal UserDetails user) {
     	shoppingCartServicio.enviarVenta(user);
-    	//shoppingCartServicio.generarFechaEntregaVenta();
     	return "redirect:/private/index";
     	
     }
